@@ -137,27 +137,26 @@
     <script>
         const audio = document.getElementById('bgMusic');
 
-        async function playDirectly() {
+        async function attemptPlay() {
             try {
-                audio.muted = true;
                 await audio.play();
-                audio.currentTime = 0;
-                audio.muted = false;
+                console.log('Audio playing successfully');
             } catch (err) {
-                console.warn('Autoplay blocked by browser policy', err);
+                console.warn('Autoplay blocked, waiting for user interaction', err);
+                // Fallback: play on any user interaction
+                document.body.addEventListener('click', async () => {
+                    try {
+                        await audio.play();
+                    } catch (e) {
+                        console.error('Could not play audio', e);
+                    }
+                }, { once: true });
             }
         }
 
-        function initAudio() {
-            audio.load();
-            playDirectly();
-        }
-
-        if (document.readyState === 'complete') {
-            initAudio();
-        } else {
-            window.addEventListener('load', initAudio, { once: true });
-        }
+        // Try to play as soon as possible
+        window.addEventListener('DOMContentLoaded', attemptPlay);
+        window.addEventListener('load', attemptPlay);
     </script>
 
 </body>
