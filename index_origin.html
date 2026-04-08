@@ -1,0 +1,164 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💍060626 - Petra & Michal💍</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+    <!-- Elegant, lightweight handwritten font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine: wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --olive-green:  #708238;
+            --font-main: 'Tangerine', cursive;
+        }
+
+        body, html {
+            margin: 0;
+            padding:  0;
+            background-color: #ffffff;
+            font-family: var(--font-main);
+            color: var(--olive-green);
+            overflow-x: hidden;
+        }
+
+        .scroll-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:  100%;
+        }
+
+        .frame-tile {
+            position: relative;
+            width: 100%;
+            max-width:  800px;
+            /* Responsive height based on viewport width */
+            min-height: 100vh;
+            aspect-ratio: 8 / 11; 
+            /* background-image set via specific classes below */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: flex;
+            justify-content: center;
+            /* Moves content to the top of the container */
+            align-items: center; 
+            /* Responsive padding using viewport units */
+            padding-top: 0; 
+            box-sizing: border-box;
+            margin-bottom: clamp(-45px, -4vw, -20px);
+        }
+
+        .frame-1 { background-image: url('oval1.png'); }
+        .frame-2 { background-image: url('oval2.png'); }
+        .frame-3 { background-image: url('oval3.png'); }
+        .frame-4 { background-image: url('oval4.png'); }
+        .frame-5 { background-image: url('oval5.png'); }
+        .frame-6 { background-image: url('oval6.png'); }
+        . text-box {
+            text-align: center;
+            line-height: 0.9;
+            width: 80%;
+            /* Extra lightweight feel via letter spacing */
+            letter-spacing: 0.05em;
+            /* Subtly thin lines */
+            font-weight: 400; 
+        }
+
+        /* Responsive font sizes using clamp for fluid scaling */
+        .size-1 { font-size: clamp(4rem, 10. 875vw, 8.7rem); }
+        .size-2 { font-size: clamp(3.5rem, 8.5vw, 6.8rem); }
+        .size-3 { font-size: clamp(2.5rem, 5.625vw, 4.5rem); }
+        .size-4 { font-size: clamp(2.3rem, 5.25vw, 4.2rem); }
+        .size-5 { font-size: clamp(2.2rem, 5vw, 4.0rem); }
+
+        /* Media queries for extra fine-tuning */
+        @media (max-width: 768px) {
+            .frame-tile {
+                min-height: 90vh;
+                padding-top: 0;
+            }
+            
+            .text-box {
+                width: 85%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .frame-tile {
+                min-height: 80vh;
+                padding-top: 0;
+                margin-bottom: -20px;
+            }
+            
+            .text-box {
+                width: 90%;
+                line-height: 0.95;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .frame-tile {
+                max-width: 900px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" autoplay loop preload="auto" playsinline>
+        <source src="./wedding-music1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="scroll-container">
+        
+        <!-- Frame 1 -->
+        <div class="frame-tile frame-1"></div>
+
+        <!-- Frame 2 -->
+        <div class="frame-tile frame-2"></div>
+
+        <!-- Frame 3 -->
+        <div class="frame-tile frame-3"></div>
+
+        <!-- Frame 4 -->
+        <div class="frame-tile frame-4"></div>
+
+        <!-- Frame 5 -->
+        <div class="frame-tile frame-5"></div>
+
+        <!-- Frame 6 -->
+        <div class="frame-tile frame-6" style="margin-bottom: clamp(0px, 20vh, 0px);"></div>
+
+    </div>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+
+        async function attemptPlay() {
+            try {
+                await audio.play();
+                console.log('Audio playing successfully');
+            } catch (err) {
+                console.warn('Autoplay blocked, waiting for user interaction', err);
+                // Fallback: play on any user interaction
+                document.body.addEventListener('click', async () => {
+                    try {
+                        await audio.play();
+                    } catch (e) {
+                        console.error('Could not play audio', e);
+                    }
+                }, { once: true });
+            }
+        }
+
+        // Try to play as soon as possible
+        window.addEventListener('DOMContentLoaded', attemptPlay);
+        window.addEventListener('load', attemptPlay);
+    </script>
+
+</body>
+</html>
