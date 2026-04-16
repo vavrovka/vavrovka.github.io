@@ -449,8 +449,8 @@
                 }
             });
             
-            // Toggle this popup
-            popup.classList.toggle('visible');
+            // Show this popup (no toggle, always show)
+            popup.classList.add('visible');
         });
         
         // Click support (fallback for devices that don't support touch or hover well)
@@ -462,18 +462,9 @@
                         p.classList.remove('visible');
                     }
                 });
-                popup.classList.toggle('visible');
+                popup.classList.add('visible');
             }
         });
-    });
-    
-    // Close popups when touching outside on mobile
-    document.addEventListener('touchstart', function(e) {
-        if (!e.target.closest('.hotspot') && !e.target.closest('.schedule-popup')) {
-            document.querySelectorAll('.schedule-popup').forEach(p => {
-                p.classList.remove('visible');
-            });
-        }
     });
 </script>
 
