@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program – Petra & Michal 💍</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100%;
+            font-family: 'CustomFont', cursive;
+            background-color: #1a1a10;
+        }
+
+        body {
+            background-image: url('middle.png');
+            background-repeat: repeat-y;
+            background-position: center top;
+            background-size: 100% auto;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .top-section {
+            width: 100%;
+            background-image: url('top.jpg');
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: 100% auto;
+            position: relative;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-section {
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+        }
+
+        .hotspot-block {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: transparent;
+            border-radius: 8px;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .hotspot-block h2 {
+            color: #4a6020;
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: none;
+            letter-spacing: 0.02em;
+        }
+
+        .hotspot-block p {
+            color: #3a4a18;
+            font-size: clamp(1rem, 4.5vw, 2rem);
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+            margin-bottom: 8px;
+        }
+
+        .bottom-section {
+            width: 100%;
+            background-image: url('bottom.png');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: 100% auto;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .bottom-spacer {
+            width: 100%;
+            height: 300px;
+        }
+
+        @media (min-width: 768px) {
+            .content-section {
+                padding: 30px 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Top section with map -->
+    <div class="top-section">
+        <img src="mapka3.png" class="map-image" alt="Mapa areálu">
+    </div>
+
+    <!-- Content section with all hotspot information -->
+    <div class="content-section">
+        
+        <div class="hotspot-block">
+            <h2>Parkovací louka</h2>
+            <p>12:00 Parkování</p>
+            <p>13:00 Hledání auta</p>
+            <p>20:05 Odjezd taxi</p>
+            <p>22:05 Odjezd taxi</p>
+            <p>24:05 Odjezd taxi</p>
+            <p>03:00 Rozvoz opozdilců</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Uvítací louka</h2>
+            <p>13:00 Výdej myrty</p>
+            <p>13:50 Konec výdeje</p>
+            <p>15:00 Ztráty a nálezy</p>
+            <p>20:00 Taxi stanoviště</p>
+            <p>22:00 Taxi stanoviště</p>
+            <p>24:00 Taxi stanoviště</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Obřadní louka</h2>
+            <p>13:30 Předobřadní napětí</p>
+            <p>14:00 Obřad</p>
+            <p>14:30 Focení</p>
+            <p>15:00 Přípitek</p>
+            <p>21:00 Západ slunce</p>
+            <p>6:00 Východ slunce</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Bar</h2>
+            <p>13:00 Prosecco</p>
+            <p>15:00 Víno</p>
+            <p>16:00 Pivo</p>
+            <p>18:00 Grilované maso</p>
+            <p>20:00 Pizza</p>
+            <p>22:00 Koktejl</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Kantýna</h2>
+            <p>13:00 Kanapky</p>
+            <p>13:30 Saláty</p>
+            <p>16:00 Káva a zákusky</p>
+            <p>17:30 Koláče</p>
+            <p>18:30 Dezerty</p>
+            <p>22:00 Pulnoční guláš</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Odpočinková louka</h2>
+            <p>15:00 Lenošení</p>
+            <p>16:00 Hraní her</p>
+            <p>18:00 Opalování</p>
+            <p>20:00 Malování</p>
+            <p>22:00 Pozorování hvězd</p>
+            <p>06:00 Východ slunce</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Společná louka</h2>
+            <p>13:00 Kávička</p>
+            <p>15:00 Pokec</p>
+            <p>16:00 Něco z grilu</p>
+            <p>17:00 Pub quiz</p>
+            <p>19:00 Dezertíček</p>
+            <p>21:00 Drink</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Sportovní louka</h2>
+            <p>15:00 Turnaj v beach volejbalu</p>
+            <p>16:00 Turnaj ve fotbale</p>
+            <p>17:00 Turnaj v badmintonu</p>
+            <p>18:00 Turnaj v pétanque</p>
+            <p>19:00 Turnaj ve vybíjené</p>
+            <p>20:00 Turnaj v pingpongu</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Dětská louka</h2>
+            <p>13:00 Házení</p>
+            <p>15:00 Běhání</p>
+            <p>16:00 Skákání</p>
+            <p>17:00 Protahování</p>
+            <p>18:00 Dovádění</p>
+            <p>19:00 Skotačení</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Hudba</h2>
+            <p>17:30 Nevěstina kapela</p>
+            <p>18:30 Ženichova kapela</p>
+            <p>19:30 Jam session</p>
+            <p>20:30 Karakoke party</p>
+            <p>22:30 Taneční rej</p>
+            <p>6:30 Východ slunce</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Ohňová louka</h2>
+            <p>13:00 Vyprávění</p>
+            <p>15:00 Posedávání</p>
+            <p>16:00 Popíjení</p>
+            <p>18:00 Oheň</p>
+            <p>20:00 Opékání buřtů</p>
+            <p>22:00 Zpěv</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Stanová louka</h2>
+            <p>12:00 Stavění stanů</p>
+            <p>13:00 Foukání karimatky</p>
+            <p>20:00 Hledání stanu</p>
+            <p>24:00 Foukání karimatky</p>
+            <p>20:00 Marná snaha usnout</p>
+            <p>6:00 Východ slunce</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Les</h2>
+            <p>12:00 Rozjímání</p>
+            <p>15:00 Běhání</p>
+            <p>17:00 Stavba příbytku</p>
+            <p>19:00 Snění</p>
+            <p>21:00 Západ slunce</p>
+            <p>23:00 Noční souznění</p>
+        </div>
+
+        <div class="hotspot-block">
+            <h2>Rybník</h2>
+            <p>15:00 Koupání</p>
+            <p>16:00 Opalování</p>
+            <p>17:00 Potápění</p>
+            <p>19:00 Osušování</p>
+            <p>21:00 Lenošení</p>
+            <p>22:30 Noční koupání</p>
+        </div>
+
+    </div>
+
+    <!-- Bottom section -->
+    <div class="bottom-section">
+        <div class="bottom-spacer"></div>
+    </div>
+</div>
+
+</body>
+</html>
