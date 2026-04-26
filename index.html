@@ -129,6 +129,45 @@
         /* SVG visual elements */
         .svg-dot {
             opacity: 1;
+            transition: fill 0.3s ease, stroke 0.3s ease;
+        }
+
+        .svg-dot.active {
+            fill: #708238;
+            stroke: #5a6b2d;
+            stroke-width: 3;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% {
+                r: 12;
+                opacity: 1;
+            }
+            50% {
+                r: 18;
+                opacity: 0.8;
+            }
+        }
+
+        .svg-pulse {
+            transition: stroke 0.3s ease;
+        }
+
+        .svg-pulse.active {
+            stroke: rgba(112, 130, 56, 0.8) !important;
+            animation: activePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes activePulse {
+            0%, 100% {
+                r: 16;
+                opacity: 0.7;
+            }
+            50% {
+                r: 24;
+                opacity: 0.2;
+            }
         }
 
         .svg-line {
@@ -386,6 +425,34 @@
     const svgOverlay = document.getElementById('svgOverlay');
     const mapContainer = document.getElementById('mapContainer');
     const SVG_NS = 'http://www.w3.org/2000/svg';
+    
+    // Store references to dots and pulses for highlighting
+    const dotElements = [];
+    const pulseElements = [];
+    const popupElements = [];
+
+    // Function to highlight a specific hotspot
+    function highlightHotspot(index) {
+        // Remove active class from all dots and pulses
+        dotElements.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+                pulseElements[i].classList.add('active');
+            } else {
+                dot.classList.remove('active');
+                pulseElements[i].classList.remove('active');
+            }
+        });
+        
+        // Hide all popups and show the selected one
+        popupElements.forEach((popup, i) => {
+            if (i === index) {
+                popup.classList.add('visible');
+            } else {
+                popup.classList.remove('visible');
+            }
+        });
+    }
 
     HOTSPOTS.forEach((hotspot, index) => {
         const id = index + 1;
@@ -413,6 +480,7 @@
         pulse.setAttribute('stroke', 'rgba(112, 130, 56, 0.6)');
         pulse.setAttribute('stroke-width', '2');
         svgOverlay.appendChild(pulse);
+        pulseElements.push(pulse);
         
         // Line (hidden by CSS) - now vertical to bottom
         const line = document.createElementNS(SVG_NS, 'line');
@@ -438,6 +506,7 @@
         dot.setAttribute('stroke', '#fffff0');
         dot.setAttribute('stroke-width', '2.5');
         svgOverlay.appendChild(dot);
+        dotElements.push(dot);
         
         // ---- Create Hotspot Div ----
         
@@ -467,45 +536,40 @@
         });
         
         mapContainer.appendChild(popup);
+        popupElements.push(popup);
         
         // ---- Add Event Listeners ----
         
         // Desktop hover
         hotspotDiv.addEventListener('mouseenter', function() {
-            popup.classList.add('visible');
+            highlightHotspot(index);
         });
         
         hotspotDiv.addEventListener('mouseleave', function() {
+            // Remove highlight and hide popup
+            dotElements.forEach(dot => dot.classList.remove('active'));
+            pulseElements.forEach(pulse => pulse.classList.remove('active'));
             popup.classList.remove('visible');
         });
         
         // Mobile touch support
         hotspotDiv.addEventListener('touchstart', function(e) {
             e.preventDefault(); // Prevent mouse events from firing
-            
-            // Hide all other popups
-            document.querySelectorAll('.schedule-popup').forEach(p => {
-                if (p !== popup) {
-                    p.classList.remove('visible');
-                }
-            });
-            
-            // Show this popup (no toggle, always show)
-            popup.classList.add('visible');
+            highlightHotspot(index);
         });
         
         // Click support (fallback for devices that don't support touch or hover well)
         hotspotDiv.addEventListener('click', function(e) {
             // Only handle if not a touch device (to avoid double-triggering)
             if (!e.touches) {
-                document.querySelectorAll('.schedule-popup').forEach(p => {
-                    if (p !== popup) {
-                        p.classList.remove('visible');
-                    }
-                });
-                popup.classList.add('visible');
+                highlightHotspot(index);
             }
         });
+    });
+    
+    // Show "Obřadní louka" (index 2) by default on page load
+    window.addEventListener('load', function() {
+        highlightHotspot(2); // Obřadní louka is at index 2
     });
 </script>
 
