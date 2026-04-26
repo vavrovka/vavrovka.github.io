@@ -135,9 +135,47 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        /* Switch icon */
+        .switch-icon {
+            position: fixed;
+            top: 2vmin;
+            right: 2vmin;
+            width: 8vmin;
+            height: 8vmin;
+            background: rgba(112, 130, 56, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .switch-icon:hover {
+            background: rgba(112, 130, 56, 1);
+            transform: scale(1.1);
+        }
+
+        .switch-icon svg {
+            width: 5vmin;
+            height: 5vmin;
+            fill: #fffff0;
+        }
     </style>
 </head>
 <body>
+
+<!-- Switch to landscape version -->
+<a href="indexpc.html" class="switch-icon" title="Přepnout na PC verzi">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <line x1="2" y1="17" x2="22" y2="17" stroke="currentColor" stroke-width="2"/>
+        <path d="M 9 21 L 15 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+</a>
 
 <div class="map-wrapper">
     <div class="map-container" id="mapContainer">
