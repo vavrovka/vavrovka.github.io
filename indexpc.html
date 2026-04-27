@@ -77,9 +77,9 @@
         }
 
         @keyframes pulse {
-            0%   { opacity: 0.7; r: 12; }
-            50%  { opacity: 0.2; r: 24; }
-            100% { opacity: 0.7; r: 12; }
+            0%   { opacity: 0.85; r: 14; }
+            50%  { opacity: 0.4; r: 30; }
+            100% { opacity: 0.85; r: 14; }
         }
 
         /* Schedule popup panels in the right half */
@@ -128,6 +128,45 @@
         /* SVG visual elements */
         .svg-dot {
             opacity: 1;
+            transition: fill 0.3s ease, stroke 0.3s ease;
+        }
+
+        .svg-dot.active {
+            fill: #8fa045;
+            stroke: #6d8030;
+            stroke-width: 3;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% {
+                r: 14;
+                opacity: 1;
+            }
+            50% {
+                r: 24;
+                opacity: 0.85;
+            }
+        }
+
+        .svg-pulse {
+            transition: stroke 0.3s ease;
+        }
+
+        .svg-pulse.active {
+            stroke: rgba(143, 160, 69, 0.9) !important;
+            animation: activePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes activePulse {
+            0%, 100% {
+                r: 18;
+                opacity: 0.8;
+            }
+            50% {
+                r: 32;
+                opacity: 0.3;
+            }
         }
 
         .svg-line {
@@ -142,7 +181,7 @@
             right: 2vmin;
             width: 8vmin;
             height: 8vmin;
-            background: rgba(112, 130, 56, 0.8);
+            background: rgba(144, 238, 144, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -154,14 +193,14 @@
         }
 
         .switch-icon:hover {
-            background: rgba(112, 130, 56, 1);
+            background: rgba(144, 238, 144, 1);
             transform: scale(1.1);
         }
 
         .switch-icon svg {
             width: 5vmin;
             height: 5vmin;
-            fill: #fffff0;
+            color: #2d5016;
         }
     </style>
 </head>
@@ -248,7 +287,7 @@
                 '13:00 Prosecco',
                 '15:00 Víno',
                 '16:00 Pivo',
-                '18:00 Grilované maso',
+                '18:00 Grilování',
                 '20:00 Pizza',
                 '22:00 Koktejl'
             ]
@@ -262,7 +301,7 @@
                 '16:00 Káva a zákusky',
                 '17:30 Koláče',
                 '18:30 Dezerty',
-                '22:00 Pulnoční guláš'
+                '22:00 Půlnoční guláš'
             ]
         },
         {
@@ -320,8 +359,8 @@
                 '17:30 Nevěstina kapela',
                 '18:30 Ženichova kapela',
                 '19:30 Jam session',
-                '20:30 Karakoke party',
-                '22:30 Taneční rej',
+                '20:30 Karaoke party',
+                '21:30 Taneční rej',
                 '6:30 Východ slunce',
 
             ]
@@ -346,7 +385,7 @@
                 '13:00 Foukání karimatky',
                 '20:00 Hledání stanu',
                 '24:00 Foukání karimatky',
-                '20:00 Marná snaha usnout',
+                '2:00 Marná snaha usnout',
                 '6:00 Východ slunce'
             ]
         },
